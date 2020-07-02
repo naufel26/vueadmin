@@ -10,3 +10,13 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+.DS_Store
+.idea/
+/public/phpmyadmin
+composer.lock
+webpack.mix.js
+/dist
+mix-manifest.json
+/.idea
+/.vscode
+/.vagrant

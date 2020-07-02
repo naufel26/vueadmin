@@ -19,6 +19,7 @@
                       <th>Name</th>
                       <th>Email</th>
                       <th>Type</th>
+                      <th>Created At</th>
                       <th>Tools</th>
                     </tr>
                   </thead>
@@ -27,7 +28,8 @@
                       <td>{{user.id}}</td>
                       <td>{{user.name}}</td>
                       <td>{{user.email}}</td>
-                      <td><span class="tag tag-success">{{user.type}}</span></td>
+                      <td><span class="tag tag-success">{{user.type | upText}}</span></td>
+                      <td>{{user.created_at | myDate}}</td>
                       <td><a href="" class="">
                           <i class="fas fa-edit"></i></a>
                           <a href="" class="">
@@ -128,7 +130,16 @@
         axios.get('api/user').then( ({ data }) => (this.users = data.data) )
       },
       createUser(){
+        this.$Progress.start();
         this.form.post('api/user');
+
+        $('#exampleModal').modal('hide');
+        Toast.fire({
+          icon: 'success',
+          title: 'User Created Successfully.'
+        });
+
+        this.$Progress.finish();
       }
   },
         created() {
